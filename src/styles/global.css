@@ -126,9 +126,9 @@ a {
 }
 
 @media screen and (min-width: 640px) {
-  /* .post {
+  .page-content {
     width: 60%;
-  } */
+  }
 
   .wp-block-gallery {
     display: grid;

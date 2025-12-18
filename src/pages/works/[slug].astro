@@ -16,7 +16,7 @@ const { page } = Astro.props;
 ---
 
 <MainLayout title={page.title.rendered}>
-  <div class="post">
+  <div class="page-content">
     <h1 set:html={page.title.rendered} />
     <Fragment set:html={page.content.rendered} />
   </div>

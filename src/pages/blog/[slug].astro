@@ -19,7 +19,7 @@ const stats = readingTime(post.content.rendered);
 ---
 
 <MainLayout title={post.title.rendered}>
-  <article class="post">
+  <article class="page-content">
     <div class="post-header">
       <h1 set:html={post.title.rendered} />
       <p>Published {formatDate(post.date)}</p>
