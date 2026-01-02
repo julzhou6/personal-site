@@ -124,10 +124,19 @@ a {
   width: 100%;
   margin: revert;
 }
+@media screen and (min-width: 340px) {
+  .page-content {
+    width: 80%;
+  }
+}
 
 @media screen and (min-width: 640px) {
   .page-content {
     width: 60%;
+  }
+
+  .container {
+    padding: 0;
   }
 
   .wp-block-gallery {
