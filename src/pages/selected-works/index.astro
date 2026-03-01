@@ -1,0 +1,186 @@
+---
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import { fetchAPI } from "../../lib/api";
+import bbCover from "../../images/Cover-Art-V3-logo.png";
+// import bbPage from "../../images/Ch1-1.png";
+import travel from "../../images/Travel_As_Medicine.png";
+import fighter from "../../images/2022_Takeaways.png";
+import { Image } from 'astro:assets';
+import { Carousel } from 'astro-carousel';
+import type { ComponentProps } from "astro/types";
+
+const data = await fetchAPI("pages?_embed");
+const images: ComponentProps<typeof Carousel>["images"] = [
+    {
+        src: "https://i.postimg.cc/RVLxKv9Q/Lantern-Reunion-copy.jpg",
+        alt: "Reunion under Lanterns, 2025",
+        format: "webp",
+        width: 6096,
+        height: 3048,
+        widths: [500, 675, 1350],
+    },
+    {
+      src: "https://i.postimg.cc/DyC0n1cW/Hokkaido-Milk-Tea-Jelly.jpg",
+      alt: "Hokkaido Milk Tea Jelly, 2024",
+      format: "webp",
+      width: 2550,
+      height: 3300,
+      widths: [450, 675, 1350],
+    }, 
+    {
+        src: "https://i.postimg.cc/4xpZ8pzB/Year-Of-Wood-Dragon-copy.png",
+        alt: "Year of the Wood Dragon, 2024",
+        format: "webp",
+        width: 2550,
+        height: 3300,
+        widths: [450, 675, 1350],
+    }, 
+    {
+        src: "https://i.postimg.cc/MpYGzXD7/change.png",
+        alt: "Chang'e, 2025",
+        format: "webp",
+        width: 1820,
+        height: 2507,
+        widths: [450, 675, 1350],
+    },
+    {
+        src: "https://i.postimg.cc/C17T9fsV/jade-rabbit.png",
+        alt: "Jade Rabbit, 2025",
+        format: "webp",
+        width: 1820,
+        height: 2355,
+        widths: [450, 675, 1350],
+    },
+    {
+      src: "https://i.postimg.cc/dVNpnVj5/moonwavy.png",
+      alt: "Moonwavy, 2025",
+      format: "webp",
+      width: 2480,
+      height: 3508,
+      widths: [450, 675, 1350],
+  }, 
+  {
+    src: "https://i.postimg.cc/HspNgySw/IMG_0030.png",
+    alt: "Under the Moonlight, 2025",
+    format: "webp",
+    width: 3300,
+    height: 2550,
+    widths: [450, 675, 1350],
+  },
+];
+---
+
+<MainLayout title="Works">
+  <Carousel images={images} />
+  <section class="post">
+    <!-- <h1 class="page-title heading">WORKS</h1> -->
+    <h1 class="page-title heading">SELECTED WORKS</h1>
+    <h2 class="page-title">SEQUENTIAL WORK</h2>
+    <div class="page-container">
+        <a href="https://burnbrightlycomic.com/comic/1.1/" target="_blank">
+          <Image id="bb-cover" class="bb-cover" src={bbCover} alt="a drawing of a girl looking over her shoulder while walking" width={250}/>
+          <imgcaption>Burn Brightly, 2024</imgcaption>
+        </a>
+        <a href="https://www.instagram.com/p/Co00odgrVi2/?img_index=1" target="_blank">
+          <Image id="bb-cover" class="bb-cover" src={fighter} alt="" width={250}/>
+          <imgcaption>Fighting Your Demons, 2022</imgcaption>
+        </a>
+        <a href="https://www.instagram.com/p/CxouInrxPrD/?img_index=1" target="_blank">
+          <Image id="bb-cover" class="bb-cover" src={travel} alt="" width={250}/>
+          <imgcaption>Travel as Medicine, 2023</imgcaption>
+        </a>
+      </div>
+    <h2 class="page-title">ILLUSTRATION</h2>
+    <div class="page-container">
+      <ul id="carouselTargetList">
+        {images.map((img, index) => {
+          return (
+            <li>
+              <a
+                href={`/?image=${index}`}
+                data-carousel-index={index}
+              >
+                <img
+                  src={img.src}
+                  alt=""
+                />
+              </a>
+              <imgcaption>{img.alt}</imgcaption>
+            </li>
+          );
+        })}
+        </ul>
+    </div>
+  </section>
+</MainLayout>
+<style>
+  img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+
+  imgcaption {
+    margin-top: 0.5rem;
+    display: block;
+    font-style: italic
+  }
+
+  #carouselTargetList {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .bb-cover {
+    border: 1px solid;
+    border-color: orange;
+    border-radius: 10px;
+  }
+  .bb-cover:hover {
+    opacity: 70%;
+    transition: 0.2s ease-in-out;
+  }
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .page-grid {
+    visibility: hidden;
+    padding-bottom: 2rem;
+    width: 300px;
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+  import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+</script>
