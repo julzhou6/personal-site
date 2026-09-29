@@ -1,28 +1,30 @@
 ---
-// component imports
-import MainLayout from "../../layouts/MainLayout.astro";
-import { fetchAPI } from "../../lib/api";
-import PreviewPage from "../../layouts/PreviewPage.astro";
-import bbCover from "../../images/Cover-Art-V3-logo.png";
-import { Image } from 'astro:assets';
-import { Carousel } from 'astro-carousel';
-import type { ComponentProps } from "astro/types";
-
+import { fetchAPI } from "../lib/api";
+import PreviewPage from "../layouts/PreviewPage.astro";
+// import bbCover from "../../images/Cover-Art-V3-logo.png";
 const data = await fetchAPI("pages?_embed");
----
 
-<MainLayout title="Works">
+const bbPage = {
+    url: "https://i.postimg.cc/t4fQFP0H/Cover-Art-V3-logo.png",
+    alt: "Burn Brightly Comic Cover",
+    slug: "https://burnbrightlycomic.com",
+    title: "Burn Brightly Comic",
+};
+// console.log(bbPage);
+---
   <section class="post">
-    <h1 class="page-title heading">PROJECTS</h1>
-    <h2>CODE AND DESIGN BLOG</h2>
+    <h2>DESIGN AND DEV</h2>
     <div class="page-container">
       {
         data.map((page) => (
           <div class="page-grid">
-            <PreviewPage page={page} />
+            <PreviewPage page={page} wp={true} />
           </div>
         ))
       }
+      <div class="page-grid">
+        <PreviewPage page={bbPage} wp={false} />
+      </div>
     </div>
   </section>
 </MainLayout>

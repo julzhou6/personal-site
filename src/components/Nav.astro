@@ -1,20 +1,20 @@
 ---
-import Link from "./Link.astro";
+// import Link from "./Link.astro";
 
-const navData = [
-    {
-        name: "BLOG",
-        path: "/blog",
-    },
-    {
-        name: "ART",
-        path: "/art",
-    },
-    {
-        name: "PROJECTS",
-        path: "/projects",
-    },
-];
+// const navData = [
+//     // {
+//     //     name: "BLOG",
+//     //     path: "/blog",
+//     // },
+//     {
+//         name: "ART",
+//         path: "/art",
+//     },
+//     {
+//         name: "PROJECTS",
+//         path: "/projects",
+//     },
+// ];
 ---
 
 <nav aria-label="primary">
@@ -23,7 +23,7 @@ const navData = [
             <span class="title"><h1>JULIE 秋丽</h1></span>
         </a>
 
-        <ul class="nav-list">
+        <!-- <ul class="nav-list">
             {
                 navData.map((item) => (
                     <Link
@@ -34,7 +34,7 @@ const navData = [
                     />
                 ))
             }
-        </ul>
+        </ul> -->
     </div>
 </nav>
 
@@ -50,22 +50,22 @@ const navData = [
 
     .nav-bar {
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         justify-content: space-between;
         /* align-items: center; */
         width: 100%;
         max-width: 1500px;
         margin-left: auto;
         margin-right: auto;
-        padding: 0.6rem 0;
+        padding: 0.1rem 0;
     }
 
     [aria-label="primary"] {
         width: 100%;
-    }
-
-    .cat-icon {
-        padding-right: 1rem;
+        top: 0; 
+        position: sticky;
+        background-color: white;
+        opacity: 0.9;
     }
 
     .title {
@@ -81,10 +81,10 @@ const navData = [
         padding-left: 1rem;
     }
 
-    .nav-list {
+    /* .nav-list {
        align-content: center;
        padding: 0;
-    }
+    } */
 
     
 </style>

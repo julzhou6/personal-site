@@ -1,8 +1,11 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import meDrawing from "../icons/medrawing.PNG";
+import meDrawing from "../icons/medrawing.png";
 import { Image } from 'astro:assets';
 import Icon from "astro-icon";
+import { gsap } from "gsap";
+import Projects from "../components/Projects.astro";
+import Illustration from "../components/Illustration.astro";
 ---
 
 <MainLayout title="Home | Julie Zhou">
@@ -13,7 +16,7 @@ import Icon from "astro-icon";
                     <Image id="me-drawing" class="me-drawing" src={meDrawing} alt="a drawing of me wearing a cat ear tangerine hat" width={200}/>
                     <div id="bio-text">
                         <h1 class="title heading">Hi I'm Julie!</h1>
-                        <p>Welcome welcome! I'm an artist and technologist based in Washington DC! I love to explore the relationship between food, nature, and identity through different mediums like digital art, watercolor, sculpting and more.</p>
+                        <p>Welcome welcome! I'm an artist and technologist based in Washington DC! I love to explore the relationship between food, nature, and identity through different mediums like digital art, color pencil, sculpting and more.</p>
                             <p>
                             Currently, I am open to creative collaborations and freelance projects!
                             </p> 
@@ -28,17 +31,17 @@ import Icon from "astro-icon";
             </div>
         </div>
     </section>
+    <Projects />
+    <Illustration />
 </MainLayout>
 <style>
+    /* About Bio */
     .welcome-text {
         display: flex;
         justify-content: center;
         padding: 2rem;
         text-align: center;
     }
-    /* section {
-        min-height: 100vw;
-    } */
     img {
         aspect-ratio: auto;
     }
@@ -59,8 +62,13 @@ import Icon from "astro-icon";
     }
     @media screen and (min-width: 640px) {
         .bio {
-            max-width: 50%; 
+            margin: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            align-items: center;
         }
+        
     }
     @media screen and (max-width: 640px) {
         .heading {
@@ -69,6 +77,11 @@ import Icon from "astro-icon";
     }
     .social-icon {
         padding-right: 1rem;
+    }
+    .social-icon:hover {
+        shadow: 0px 0px 10px 0px var(--nav-light);
+        filter: drop-shadow(0px 0px 3px var(--nav-light));
+        transition: 0.2s ease-in-out;
     }
     .cat-mascot {
         visibility: hidden;
@@ -81,6 +94,4 @@ import Icon from "astro-icon";
     import { gsap } from "gsap";
     var t1 = gsap.timeline();
     t1.from("#bio", {opacity: 0, autoAlpha: 0})
-    // t1.from(".cat-mascot", {scale:0, opacity: 0, stagger: {each: 0.1,  from: "center"}, autoAlpha: 0})
-    // .from("#bio", {y: -100, opacity: 0, autoAlpha: 0}, "-=0.4")
 </script>

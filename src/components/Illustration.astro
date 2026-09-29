@@ -1,0 +1,123 @@
+---
+// component imports
+
+import { Image } from 'astro:assets';
+import type { ComponentProps } from "astro/types";
+import img1 from "../images/Autumn_Activities.jpg";
+import img2 from "../images/Ch1-1.png";
+import img3 from "../images/change-texture.png";
+import img4 from "../images/Cover-Art-V3-logo.png";
+import img5 from "../images/ramen.jpg";
+import img6 from "../images/cheesecake.jpg";
+import img7 from "../images/streettoast.jpg";
+import img8 from "../images/jade-rabbit-texture.png";
+import img9 from "../images/Mid-autumn-banner.jpg";
+import img10 from "../images/TangyuanBunnies.png";
+import img11 from "../images/Tiger_And_Rushou.png";
+import img12 from "../images/Year_Of_Wood_Dragon_.png";
+import img13 from "../images/YearOfTheHorse.png";
+
+const images = [
+  { src: img1, alt: "Autumn Activities" },
+  { src: img2, alt: "Chapter 1 Page 1" },
+  { src: img4, alt: "Cover Art V3 Logo" },
+  { src: img10, alt: "Tangyuan Bunnies" },
+  { src: img5, alt: "ramen" },
+  { src: img6, alt: "japanese cheesecake" },
+  { src: img7, alt: "korean street toast" },
+  { src: img3, alt: "Change Texture" },
+  { src: img8, alt: "Jade Rabbit Texture" },
+  { src: img9, alt: "Mid Autumn Banner" },
+  { src: img11, alt: "Tiger And Rushou" },
+  { src: img12, alt: "Year Of Wood Dragon" },
+  { src: img13, alt: "Year Of The Horse" }
+];
+---
+<Fragment>
+  <section class="post">
+    <h2>ILLUSTRATION</h2>
+    <div class="page-container">
+      <ul id="image-list">
+        {images.map((image) => (
+          <li class="image-grid">
+            <Image src={image.src} alt={image.alt} />
+          </li>
+        ))}
+        </ul>
+    </div>
+    </div>
+  </section>
+</Fragment>
+<style>
+  img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+  .section-text {
+    text-align: center;
+    width: 100%;
+  }
+
+   #image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+  }
+
+  .bb-cover {
+    border: 1px solid;
+    border-color: orange;
+    border-radius: 10px;
+  }
+  .bb-cover:hover {
+    opacity: 70%;
+    transition: 0.2s ease-in-out;
+  }
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .insta-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 2rem; 
+  }
+  .image-grid {
+    visibility: hidden;
+    /* padding-bottom: 2rem;
+    width: 300px; */
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+  import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".image-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+</script>
