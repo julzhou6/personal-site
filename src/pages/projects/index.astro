@@ -1,0 +1,83 @@
+---
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import { fetchAPI } from "../../lib/api";
+import PreviewPage from "../../layouts/PreviewPage.astro";
+import bbCover from "../../images/Cover-Art-V3-logo.png";
+import { Image } from 'astro:assets';
+import { Carousel } from 'astro-carousel';
+import type { ComponentProps } from "astro/types";
+
+const data = await fetchAPI("pages?_embed");
+---
+
+<MainLayout title="Works">
+  <section class="post">
+    <h1 class="page-title heading">PROJECTS</h1>
+    <h2>CODE AND DESIGN BLOG</h2>
+    <div class="page-container">
+      {
+        data.map((page) => (
+          <div class="page-grid">
+            <PreviewPage page={page} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>
+<style>
+  img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+
+  #carouselTargetList {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .page-grid {
+    visibility: hidden;
+    padding-bottom: 2rem;
+    width: 300px;
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+  import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+</script>

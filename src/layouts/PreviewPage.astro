@@ -8,7 +8,7 @@ var pageTitle = "";
 if (wp) {
   pgSrc = page._embedded["wp:featuredmedia"][0].source_url;
   pgAlt = page._embedded["wp:featuredmedia"][0].alt_text;
-  pageSlug = page.slug;
+  pageSlug = '/projects/' + page.slug;
   pageTitle = page.title.rendered;
 } 
 else {
