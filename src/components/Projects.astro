@@ -1,6 +1,7 @@
 ---
 import { fetchAPI } from "../lib/api";
 import PreviewPage from "../layouts/PreviewPage.astro";
+import CodeFun from "../pages/projects/code-fun/index.astro";
 // import bbCover from "../../images/Cover-Art-V3-logo.png";
 const data = await fetchAPI("pages?_embed");
 
@@ -10,7 +11,14 @@ const bbPage = {
     slug: "https://burnbrightlycomic.com",
     title: "Burn Brightly Comic",
 };
-// console.log(bbPage);
+
+const CodeFunPage = {
+    url: "https://i.postimg.cc/Qd1CDPMZ/cozy-coffee.jpg",
+    alt: "Code Fun",
+    slug: "/projects/code-fun/",
+    title: "Code Fun",
+};
+
 ---
   <section class="post">
     <h2>DESIGN AND DEV</h2>
@@ -22,6 +30,9 @@ const bbPage = {
           </div>
         ))
       }
+      <div class="page-grid">
+        <PreviewPage page={CodeFunPage} wp={false} />
+      </div>
       <div class="page-grid">
         <PreviewPage page={bbPage} wp={false} />
       </div>

@@ -1,0 +1,173 @@
+---
+// component imports
+import MainLayout from "../../../layouts/MainLayout.astro";
+import type { ComponentProps } from "astro/types";
+import { Image } from "astro:assets";
+import cozyCoffee from "../../../images/code-fun/cozy-coffee.gif";
+import oak1 from "../../../images/code-fun/oakleaf1.png";
+import oak2 from "../../../images/code-fun/oakleaf2.png";
+import oak3 from "../../../images/code-fun/oakleaf3.png";
+
+---
+
+<MainLayout title="Reveal | Day 1"> 
+    <slot name="head">
+        <link rel="octo:octothorpes" href="Reveal" />
+    </slot>
+    </slot>
+  <section class="post">
+    <h1 class="page-title heading">REVEAL</h1>
+    <h2 class="page-title">Day 1 of Weird Web October</h2>
+    <button id="reset" onclick="location.reload();">RESET</button>
+    <p class="page-title">Drag the oak leaves!</p>
+    <div id="page-container" class="page-container">
+      <Image id="coffee" src={cozyCoffee} alt="Cozy Coffee" />
+      <Image id="oak1" src={oak1} alt="Oak Leaf 1" />
+      <Image id="oak2" src={oak2} alt="Oak Leaf 2" />
+      <Image id="oak3" src={oak3} alt="Oak Leaf 3" />
+    </div>
+  </section>
+</MainLayout>
+<style>
+  img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+
+  #reset {
+    position: relative;
+    z-index: 11;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-light);
+  }
+
+  #coffee {
+    position: relative;
+    max-width: 700px;
+    height: auto;
+    z-index: 9;
+    padding: 10px;
+  }
+
+  #oak1, #oak2, #oak3 {
+    position: absolute;
+    max-width: 600px;
+    height: auto;
+    z-index: 10;
+    cursor: move;
+    padding: 10px;
+  }
+    #oak1 {
+        left: 400px;
+    }
+
+    #oak2 {
+        rotate: 45deg;
+        left: 550px;
+        
+    }
+    #oak3 {
+        rotate: 65deg;
+        bottom: -200px;
+    }
+
+  #carouselTargetList {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .page-grid {
+    visibility: hidden;
+    padding-bottom: 2rem;
+    width: 300px;
+  }
+
+  .post {
+    height: 100vh;
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+//   import { gsap } from "gsap";
+//   var t1 = gsap.timeline();
+//   t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+dragElement(document.getElementById("oak1"));
+dragElement(document.getElementById("oak2"));
+dragElement(document.getElementById("oak3"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (elmnt) {
+        elmnt.onmousedown = dragMouseDown;
+    } else {
+        console.log("Element not found");
+    }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>

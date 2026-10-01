@@ -1,28 +1,16 @@
 ---
 // component imports
-import MainLayout from "../../layouts/MainLayout.astro";
-import { fetchAPI } from "../../lib/api";
-import PreviewPage from "../../layouts/PreviewPage.astro";
-import bbCover from "../../images/Cover-Art-V3-logo.png";
-import { Image } from 'astro:assets';
-import { Carousel } from 'astro-carousel';
+import MainLayout from "../../../layouts/MainLayout.astro";
 import type { ComponentProps } from "astro/types";
-
-const data = await fetchAPI("pages?_embed");
+import reveal from "./reveal.astro";
 ---
 
-<MainLayout title="Works">
+<MainLayout title="Code Fun">
   <section class="post">
-    <h1 class="page-title heading">PROJECTS</h1>
-    <h2>CODE AND DESIGN BLOG</h2>
+    <h1 class="page-title heading">CODING FUN</h1>
+    <h2 class="page-title">Weird Web October</h2>
     <div class="page-container">
-      {
-        data.map((page) => (
-          <div class="page-grid">
-            <PreviewPage page={page} />
-          </div>
-        ))
-      }
+      <p>Day 1: <a href="/projects/code-fun/reveal">Reveal</a></p>
     </div>
   </section>
 </MainLayout>
@@ -77,7 +65,7 @@ const data = await fetchAPI("pages?_embed");
   }
 </style>
 <script>
-  import { gsap } from "gsap";
-  var t1 = gsap.timeline();
-  t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+//   import { gsap } from "gsap";
+//   var t1 = gsap.timeline();
+//   t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
 </script>
