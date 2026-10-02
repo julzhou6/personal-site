@@ -16,6 +16,11 @@
   --nav-light: rgb(185, 109, 64);
 }
 
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
 h1 {
   font-family: "Roboto Mono", monospace;
 }
@@ -31,6 +36,8 @@ body {
   place-items: center;
   grid-template-rows: auto 1fr auto;
   margin: 0;
+  overflow: auto;
+  height: 100%;
 }
 
 p,
