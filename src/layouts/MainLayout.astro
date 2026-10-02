@@ -12,7 +12,9 @@ const { title } = Astro.props;
     <MainHead title={title} />
     <body>
         <Nav />
-        <slot />
+        <slot>
+            <slot name="head" />
+        </slot>
         <Footer />
     </body>
 </html>
