@@ -53,13 +53,6 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
     background-color: var(--nav-light);
   }
 
-  /* .oak-container {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-  } */
-
   .oak {
     position: absolute;
     cursor: pointer;
@@ -97,7 +90,7 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
     max-width: 700px;
     height: auto;
     z-index: 9;
-    padding: 10px;
+    /* padding: 10px; */
   }
   
   #carouselTargetList {
@@ -133,8 +126,8 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
   }
   @media screen and (max-width: 340px) {
     img {
-      max-width: 200px;
-      max-height: 200px;
+      max-width: 100px;
+      max-height: 100px;
     }
     .oak {
         margin-top: -150px;
@@ -142,6 +135,10 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
     }
   }
   @media screen and (max-width: 640px) {
+    img {
+      max-width: 300px;
+      max-height: 300px;
+    }
     .page-container {
       flex-wrap: wrap;
     }
