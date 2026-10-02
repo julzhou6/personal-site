@@ -1,6 +1,7 @@
 ---
 // component imports
 import MainLayout from "../../../layouts/MainLayout.astro";
+import ChallengeLayout from "../../../layouts/ChallengeLayout.astro";
 import type { ComponentProps } from "astro/types";
 import { Image } from "astro:assets";
 import cozyCoffee from "../../../images/code-fun/cozy-coffee.gif";
@@ -10,29 +11,27 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
 
 ---
 
-<MainLayout title="Reveal | Day 1"> 
-    <slot name="head">
-        <link rel="octo:octothorpes" href="Reveal" />
-    </slot>
-    </slot>
-  <section class="post">
-    <h1 class="page-title heading">REVEAL</h1>
-    <button id="reset" onclick="location.reload();">RESET</button>
-    <p class="page-title">Drag the oak leaves!</p>
-    <div id="page-container" class="page-container">
-      <Image id="coffee" src={cozyCoffee} alt="Cozy Coffee" />
-        <div class="wrapper">
-            <Image class="oak oak--1" src={oak1} alt="Oak Leaf 1" />
+<ChallengeLayout title="Reveal | Day 1"> 
+    <link slot="head" rel="octo:octothorpes" href="Reveal" />
+   
+    <section class="post" slot="body">
+        <h1 class="page-title heading">REVEAL</h1>
+        <button id="reset" onclick="location.reload();">RESET</button>
+        <p class="page-title">Drag the oak leaves!</p>
+        <div id="page-container" class="page-container">
+        <Image id="coffee" src={cozyCoffee} alt="Cozy Coffee" />
+            <div class="wrapper">
+                <Image class="oak oak--1" src={oak1} alt="Oak Leaf 1" />
+            </div>
+            <div class="wrapper">
+                <Image class="oak oak--2" src={oak2} alt="Oak Leaf 2" />
+            </div>
+            <div class="wrapper">
+                <Image class="oak oak--3" src={oak3} alt="Oak Leaf 3" />
+            </div> 
         </div>
-        <div class="wrapper">
-            <Image class="oak oak--2" src={oak2} alt="Oak Leaf 2" />
-        </div>
-        <div class="wrapper">
-            <Image class="oak oak--3" src={oak3} alt="Oak Leaf 3" />
-        </div> 
-    </div>
-  </section>
-</MainLayout>
+    </section>
+</ChallengeLayout>
 <style>
   img {
     max-width: 400px;
@@ -124,7 +123,7 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
   }
 
   .post {
-    margin: 3rem;
+    margin: 1rem;
   }
   @media screen and (max-width: 340px) {
     img {
@@ -134,6 +133,9 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
     .oak {
         margin-top: -100px;
         margin-left: -150px;
+    }
+    .post {
+        margin: 0;
     }
   }
   @media screen and (max-width: 640px) {
@@ -149,7 +151,10 @@ import oak3 from "../../../images/code-fun/oakleaf3.png";
     }
     .oak {
         margin-top: -50px;
-        margin-left: -90px;
+        margin-left: -150px;
+    }
+    .post {
+        margin: 0;
     }
   }
 </style>
