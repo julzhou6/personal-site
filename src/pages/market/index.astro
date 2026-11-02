@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import img1 from "../../images/market/indoor-market.jpg";
+import img2 from "../../images/market/outdoor-market-setup.jpg";
+// @ts-expect-error Vite resolves the MOV file as an asset URL.
+import vid1 from "../../images/market/indoor-market-vid.mov";
+import item1 from "../../images/market/persimmon-riso.jpg";  
+import item2 from "../../images/market/zine-pics.jpg";
+import item3 from "../../images/market/print-pics.jpg";
+import item4 from "../../images/market/shrimp-pins.jpg";
+import item5 from "../../images/market/keychains.jpg";
+import item6 from "../../images/market/stickers-assorted.jpg";
+
+const items = [
+  item1,
+  item2,
+  item3,
+  item4,
+  item5,
+  item6
+];
+
+---
+
+<MainLayout title="Market">
+  <div class="post">
+    <h1 class="heading">Vending Experience</h1>
+    <div class="post-list">
+        <p>Created this page to help get to know me better as a vendor!</p>
+        <p>
+        <b>Artist Statement:</b>
+        Julie Zhou is a DC-based multimedia artist embracing the playful and whimsical through her clay creations, digital illustrations, and zines. She is often inspired by food, animals, nature, and the environment around her. 
+        </p>
+        <p>
+        Here are some examples of my previous market setups and some things I sell.
+        </p>
+    </div>
+    <div class="market-images">
+        <h2>Market Setup</h2>
+        <div class="page-container">
+            <ul class="image-list">
+                <Image src={img1} alt="Indoor Market" />
+                <Image src={img2} alt="Outdoor Market Setup" />
+                <video src={vid1} controls muted />
+            </ul>
+        </div>
+    </div>
+    <div class="market-images">
+         <h2>Products</h2>
+        <div class="page-container">
+            <ul class="image-list">
+                {items.map((item, index) => (
+                  <Image src={item} alt={`Product ${index + 1}`} />
+                ))}
+            </ul>
+        </div>
+    </div>
+       <div class="post-list">
+        <h2>Past Markets</h2>
+        <ul>
+            <li>AAPI Art Market @ Maketto</li>
+            <li>Storybox Comics Fair @ Third Hill Brewing</li>
+            <li>SAMASAMA Art Market @ Smithsonian Arts and Industries Building</li>
+            <li>MOAPIA Mid-Autumn Festival @ Chinatown Park</li>
+            <li>Chinatown Night Out @ Chinatown Park</li>
+        </ul>
+    </div>
+</div>
+</MainLayout>
+<!-- <script define:vars={{ data }}>
+  console.log(data);
+</script> -->
+<style>
+    .post {
+        max-width: 90%;
+    }
+  h1 {
+    text-align: center;
+  }
+  li {
+    list-style-type: none;
+    padding-bottom: 1rem;
+  }
+  @media screen and (max-width: 640px) {
+    li {
+      padding-bottom: 2rem;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+  img, video {
+    display: block;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+   .image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+  }
+  ul {
+    padding-left: 0 !important;
+  }
+  .post-list {
+    max-width: 80%;
+    margin: auto;
+  }
+  .market-images {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+</style>
+<!-- <script>
+   import { gsap } from "gsap";
+    var t1 = gsap.timeline();
+    t1.from("#post", {opacity: 0, autoAlpha: 0})
+</script> -->
