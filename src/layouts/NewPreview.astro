@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+const { page } = Astro.props;
+
+const pgSrc = page.url;
+const pgAlt = page.alt;
+const pageSlug = page.slug;
+const pageTitle = page.title;
+---
+
+<div>
+    
+    <a class="link" href={pageSlug} target="_blank">
+        <Image
+            class="preview-image"
+            src={pgSrc}
+            alt={pgAlt}
+        />
+        <p class="preview-title" set:html={pageTitle} />
+    </a>
+</div>
+
+<style>
+   img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position: 25% 30%;
+        display: flex;
+    }
+
+    .preview-title {
+       text-align: left;
+    }
+
+    .preview-image {
+        max-width: 350px;
+        max-height: 350px;
+        width: auto;
+        height: auto;
+        display: flex;
+    }
+</style>

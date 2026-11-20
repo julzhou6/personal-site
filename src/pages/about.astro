@@ -1,57 +1,96 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-const links = {
-	github: "https://github.com/julzhou6",
-	linkedin: "https://linkedin.com/in/julielinzhou",
-	codepen: "https://codepen.io/julzhou6",
-};
+import { Image } from 'astro:assets';
+import Icon from "astro-icon";
+
+import meDrawing from "../icons/meDrawing.jpg";
 ---
 
 <MainLayout title="About">
-	<section class="container post" aria-label="About this Blog">
-		<!-- <img src="" alt="" width="" height=""> -->
-		<div class="about-desc">
-			<h1>About Me</h1>
-			<p>
-				Hi I'm Julie! Currently, my main interests lie in the
-				intersection between art and technology. Storytelling is also a
-				big passion of mine, which is why I love making comics/zines and
-				consuming/talking about media that tell stories really well.
-			</p>
-			<p>
-				<b>I am open to new front-end/web development-related
-					opportunities!</b> I graduated from the University of Virginia in '21 majoring in
-				Computer Science and Media Studies and since then, have had a few
-				opportunities to work in web development. My latest experience comes
-				from working on the front-end of a content-management system.
-			</p>
-			<p>Some places you'll find me at:</p>
-			<div>
-				<ul>
-					<li><a href="mailto:julielinzhou@gmail.com">Email</a></li>
-					<li>
-						<a href="https://linkedin.com/in/julielinzhou"
-							>LinkedIn</a
-						>
-					</li>
-					<li><a href="https://github.io/julzhou6">Github</a></li>
-					<li><a href="https://codepen.io/julzhou6">Codepen</a></li>
-					<li>
-						<a href="https://instagram.com/julieqiuli">Instagram</a>
-					</li>
-				</ul>
-			</div>
-			<h1>About this Blog</h1>
-			<p style="font-style: oblique;">
-				What is this site?
-			</p>
-			<p>
-				It's a personal blog and space for me to experiment with web development and writing! Lots of cats, lots of softness, and (hopefully) a medley of many great hits. :^)
-			</p>
-			<p>
-				P.S. Interested in how this site was built? It was built in
-				Astro + headless Wordpress! A project page coming on that soon.
-			</p>
-		</div>
-	</section>
+	<section class="container welcome-text">
+        <div>
+            <div class="bio-box"> 
+                <div id="bio" class="bio">
+                    <Image id="me-drawing" class="me-drawing" src={meDrawing} alt="a drawing of me wearing a cat ear tangerine hat" width={200}/>
+                    <div id="bio-text">
+                        <h1 class="title heading">Hi I'm Julie!</h1>
+                        <p>Welcome welcome! I'm an artist and technologist based in Washington, DC! I often explore the intersection of my interests of technology, art, nature, food, and fashion. I'm a budding storyteller that draws influence from my upbringing as a Chinese-American.</p>
+							<p>
+								For more musings and thoughts on art and taking the creative path, check out <a href="https://julieqiuli.substack.com/" target="_blank">my blog</a>!
+                            </p> 
+							<p>
+                            Currently, I am open to creative collaborations and freelance projects! Feel free to email me at <b>julielinzhou@gmail.com</b>.
+                            </p> 
+                        <div class="socials">
+                            <a href="mailto:julielinzhou@gmail.com" class="social-icon"><Icon name="mail" width="50"/></a>
+                            <a href="https://linkedin.com/in/julielinzhou" class="social-icon" target="_blank"> <Icon name="linkedin" width="50"/></a>
+                            <a href="https://instagram.com/julieqiuli" class="social-icon" target="_blank"> <Icon name="insta" width="50"/></a>
+                            <a href="https://github.com/julzhou6" class="social-icon" target="_blank"><Icon name="github" width="50"/></a>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </MainLayout>
+<style>
+	  /* About Bio */
+    .welcome-text {
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+    }
+    img {
+        aspect-ratio: auto;
+    }
+    .me-drawing {
+        border-radius: 50%;
+    }
+    .bio-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cat-box {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-bottom: 1rem;
+    }
+    @media screen and (min-width: 640px) {
+        .bio {
+            margin: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            justify-items: center;
+            align-items: center;
+        }
+        
+    }
+    @media screen and (max-width: 640px) {
+        .heading {
+            font-size: 50px;
+        }
+    }
+    .social-icon {
+        padding-right: 1rem;
+    }
+    .social-icon:hover {
+        shadow: 0px 0px 10px 0px var(--nav-light);
+        filter: drop-shadow(0px 0px 3px var(--nav-light));
+        transition: 0.2s ease-in-out;
+    }
+    .cat-mascot {
+        visibility: hidden;
+    }
+    .bio {
+        visibility: hidden;
+    }
+</style>
+<script>
+    import { gsap } from "gsap";
+    var t1 = gsap.timeline();
+    t1.from("#bio", {opacity: 0, autoAlpha: 0})
+</script>

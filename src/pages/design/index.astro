@@ -1,26 +1,11 @@
 ---
-import { fetchAPI } from "../lib/api";
-import PreviewPage from "../layouts/PreviewPage.astro";
-import CodeFun from "../pages/projects/code-fun/index.astro";
-// import bbCover from "../../images/Cover-Art-V3-logo.png";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { fetchAPI } from "../../lib/api";
+import PreviewPage from "../../layouts/PreviewPage.astro";
 const data = await fetchAPI("pages?_embed");
-
-const bbPage = {
-    url: "https://i.postimg.cc/t4fQFP0H/Cover-Art-V3-logo.png",
-    alt: "Burn Brightly Comic Cover",
-    slug: "https://burnbrightlycomic.com",
-    title: "Burn Brightly Comic",
-};
-
-const CodeFunPage = {
-    url: "https://i.postimg.cc/Qd1CDPMZ/cozy-coffee.jpg",
-    alt: "Code Fun",
-    slug: "/projects/code-fun/",
-    title: "Code Fun",
-};
-
 ---
-  <section class="post">
+<MainLayout title="Design">
+    <section class="post">
     <h2>DESIGN AND DEV</h2>
     <div class="page-container">
       {
@@ -30,17 +15,11 @@ const CodeFunPage = {
           </div>
         ))
       }
-      <div class="page-grid">
-        <PreviewPage page={CodeFunPage} wp={false} />
-      </div>
-      <div class="page-grid">
-        <PreviewPage page={bbPage} wp={false} />
-      </div>
     </div>
   </section>
 </MainLayout>
 <style>
-  img {
+img {
     max-width: 400px;
     max-height: 400px;
     width: auto;

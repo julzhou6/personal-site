@@ -1,0 +1,104 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import NewPreview from "../../layouts/NewPreview.astro";
+// import { Image } from 'astro:assets';
+import img1 from "../../images/comics/Cover.png";
+import img2 from "../../images/comics/abyss-1.jpg";
+import img3 from "../../images/comics/work-title.jpg"; 
+import img4 from "../../images/Cover-Art-V3-logo.png";
+
+const comicsList = [{
+    url: img1,
+    alt: "The character, Pearl, looking up at her opponent, Vin.",
+    slug: "/comics/pearl",
+    title: "Pearl",
+}, 
+{
+    url: img3,
+    alt: "The character is trying to fight into a small office cubicle.",
+    slug: "/comics/work",
+    title: "Work",
+}, 
+{
+    url: img2,
+    alt: "A girl clutching a spark of light with the text, Art feels like a friend.",
+    slug: "/comics/abyss",
+    title: "Abyss",
+}, 
+{
+    url: img4,
+    alt: "Burn Brightly Comic Cover",
+    slug: "https://burnbrightlycomic.com",
+    title: "Burn Brightly",
+}
+];
+---
+<MainLayout title="Comics">
+    <section class="post">
+    <h2>COMICS AND ZINES</h2>
+    <div class="page-container">
+        {comicsList.map((comic) => (
+            <div class="image-grid">
+                <NewPreview page={comic} />
+            </div>
+        ))}
+    </div>
+  </section>
+</MainLayout>
+<style>
+  img {
+    max-width: 350px;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+  }
+  .section-text {
+    text-align: center;
+    width: 100%;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1.5rem;
+    justify-content: left;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .insta-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 2rem; 
+  }
+  .image-grid {
+    visibility: hidden;
+    /* padding-bottom: 2rem;
+    width: 300px; */
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+    import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".image-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+</script>

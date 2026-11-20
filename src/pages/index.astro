@@ -1,97 +1,75 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import { Image } from 'astro:assets';
-import Icon from "astro-icon";
-
-import meDrawing from "../icons/meDrawing.jpg";
-import Projects from "../components/Projects.astro";
-import Illustration from "../components/Illustration.astro";
+import { fetchAPI } from "../lib/api";
+import PreviewPage from "../layouts/PreviewPage.astro";
+const data = await fetchAPI("pages?_embed");
 ---
-
-<MainLayout title="Home | Julie Zhou">
-    <section class="container welcome-text">
-        <div>
-            <div class="bio-box"> 
-                <div id="bio" class="bio">
-                    <Image id="me-drawing" class="me-drawing" src={meDrawing} alt="a drawing of me wearing a cat ear tangerine hat" width={200}/>
-                    <div id="bio-text">
-                        <h1 class="title heading">Hi I'm Julie!</h1>
-                        <p>Welcome welcome! I'm an artist and technologist based in Washington DC! I love to explore the relationship between food, nature, and identity through different mediums like digital art, color pencil, sculpting and more.</p>
-                            <p>
-                            Currently, I am open to creative collaborations and freelance projects!
-                            </p> 
-                        <div class="socials">
-                            <a href="mailto:julielinzhou@gmail.com" class="social-icon"><Icon name="mail" width="50"/></a>
-                            <a href="https://linkedin.com/in/julielinzhou" class="social-icon" target="_blank"> <Icon name="linkedin" width="50"/></a>
-                            <a href="https://instagram.com/julieqiuli" class="social-icon" target="_blank"> <Icon name="insta" width="50"/></a>
-                            <a href="https://github.com/julzhou6" class="social-icon" target="_blank"><Icon name="github" width="50"/></a>
-                        </div>   
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <Projects />
-    <Illustration />
+<MainLayout title="Julie Zhou | Home ">
+    <section class="post">
+    <h2>DESIGN AND DEV</h2>
+    <div class="page-container">
+      {
+        data.map((page) => (
+          <div class="page-grid">
+            <PreviewPage page={page} wp={true} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </MainLayout>
 <style>
-    /* About Bio */
-    .welcome-text {
-        display: flex;
-        justify-content: center;
-        padding: 2rem;
-        text-align: center;
-    }
+img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+  }
+
+  #carouselTargetList {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .page-grid {
+    visibility: hidden;
+    padding-bottom: 2rem;
+    width: 300px;
+  }
+  @media screen and (max-width: 340px) {
     img {
-        aspect-ratio: auto;
+      max-width: 200px;
+      max-height: 200px;
     }
-    .me-drawing {
-        border-radius: 50%;
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
     }
-    .bio-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .heading {
+      font-size: 40px;
     }
-    .cat-box {
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding-bottom: 1rem;
-    }
-    @media screen and (min-width: 640px) {
-        .bio {
-            margin: 0 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            justify-items: center;
-            align-items: center;
-        }
-        
-    }
-    @media screen and (max-width: 640px) {
-        .heading {
-            font-size: 50px;
-        }
-    }
-    .social-icon {
-        padding-right: 1rem;
-    }
-    .social-icon:hover {
-        shadow: 0px 0px 10px 0px var(--nav-light);
-        filter: drop-shadow(0px 0px 3px var(--nav-light));
-        transition: 0.2s ease-in-out;
-    }
-    .cat-mascot {
-        visibility: hidden;
-    }
-    .bio {
-        visibility: hidden;
-    }
+  }
 </style>
 <script>
-    import { gsap } from "gsap";
-    var t1 = gsap.timeline();
-    t1.from("#bio", {opacity: 0, autoAlpha: 0})
+  import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".page-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
 </script>

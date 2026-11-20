@@ -1,20 +1,28 @@
 ---
-// import Link from "./Link.astro";
+import Link from "./Link.astro";
 
-// const navData = [
-//     // {
-//     //     name: "BLOG",
-//     //     path: "/blog",
-//     // },
-//     {
-//         name: "ART",
-//         path: "/art",
-//     },
-//     {
-//         name: "PROJECTS",
-//         path: "/projects",
-//     },
-// ];
+const navData = [
+    {
+        name: "Design",
+        path: "/design",
+    },
+    {
+        name: "Illustration",
+        path: "/illustration",
+    },
+    {
+        name: "Comics",
+        path: "/comics",
+    },
+    {
+        name: "Market",
+        path: "/market",
+    },
+    {
+        name: "About",
+        path: "/about",
+    },
+];
 ---
 
 <nav aria-label="primary">
@@ -23,7 +31,7 @@
             <span class="title"><h1>JULIE 秋丽</h1></span>
         </a>
 
-        <!-- <ul class="nav-list">
+        <ul class="nav-list">
             {
                 navData.map((item) => (
                     <Link
@@ -34,7 +42,7 @@
                     />
                 ))
             }
-        </ul> -->
+        </ul>
     </div>
 </nav>
 
@@ -90,10 +98,11 @@
 </style>
 
 <script>
-    // const navLinks = document.querySelectorAll("[data-navLink]");
-    // navLinks.forEach((link) => {
-    //     if (window.location.pathname.includes(link.getAttribute("href"))) {
-    //         link.setAttribute("aria-current", "page");
-    //     }
-    // });
+    const navLinks = document.querySelectorAll("[data-navLink]");
+    navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href !== null && window.location.pathname.includes(href)) {
+            link.setAttribute("aria-current", "page");
+        }
+    });
 </script>

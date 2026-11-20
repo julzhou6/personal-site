@@ -1,0 +1,199 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import PreviewPage from "../../layouts/PreviewPage.astro";
+import NewPreview from "../../layouts/NewPreview.astro";
+import { Image } from 'astro:assets';
+import img1 from "../../images/Autumn_Activities.jpg";
+import img2 from "../../images/Jasmine_Tea_Girl.png";
+import img3 from "../../images/change-texture.png";
+import img4 from "../../images/persimmon.png";
+import img5 from "../../images/ramen.png";
+import img6 from "../../images/cheesecake.png";
+import img7 from "../../images/streettoast.jpg";
+import img8 from "../../images/jade-rabbit-texture.png";
+import img9 from "../../images/Mid-autumn-banner.jpg";
+import img10 from "../../images/TangyuanBunnies.png";
+import img11 from "../../images/Tiger_And_Rushou.png";
+import img12 from "../../images/Year_Of_Wood_Dragon_.png";
+import img13 from "../../images/Year_Of_The_Horse_print.png";
+import img14 from "../../images/Fall.jpg";
+import img15 from "../../images/cozy-coffee.gif";
+import img16 from "../../images/Page4.jpeg";
+
+const images = [
+  { src: img1, alt: "Autumn Activities" },
+  { src: img2, alt: "Jasmine Tea Girl" },
+  { src: img4, alt: "Persimmon" },
+  { src: img10, alt: "Tangyuan Bunnies" },
+  { src: img5, alt: "ramen" },
+  { src: img6, alt: "japanese cheesecake" },
+  { src: img7, alt: "korean street toast" },
+  { src: img3, alt: "Change Texture" },
+  { src: img8, alt: "Jade Rabbit Texture" },
+  { src: img9, alt: "Mid Autumn Banner" },
+  { src: img11, alt: "Tiger And Rushou" },
+  { src: img12, alt: "Year Of Wood Dragon" },
+  { src: img13, alt: "Year Of The Horse" }, 
+  { src: img14, alt: "Fall Characters" }, 
+    { src: img15, alt: "Cozy Coffee" },
+    { src: img16, alt: "duck in a river" }
+];
+
+const everythinggoes = {
+    url: img16,
+    alt: "Illustration of a Duck in a River",
+    slug: "/illustration/everythinggoes",
+    title: "everythinggoes",
+};
+---
+<MainLayout title="Illustration">
+    <section class="post">
+    <h2>ILLUSTRATION</h2>
+    <h3>COLLECTIONS</h3>
+    <div class="page-container">
+      <div class="image-grid">
+       <!-- <PreviewPage page={everythinggoes} wp={false} /> -->
+        <NewPreview page={everythinggoes} />
+        </div>
+    </div>
+    <h3>CHARACTERS</h3>
+    <div class="page-container">
+      <ul id="image-list">
+          <li class="image-grid">
+            <Image src={img2} alt="Jasmine Tea Girl" />
+          </li>
+          <li class="image-grid">
+            <Image src={img3} alt="Change Texture" />
+          </li>
+          <li class="image-grid">
+            <Image src={img12} alt="Year of the Wood Dragon" />
+          </li>
+          <li class="image-grid">
+            <Image src={img14} alt="Fall Characters" />
+          </li>
+        </ul>
+    </div>
+    <h3>ANIMALS</h3>
+     <div class="page-container">
+      <ul id="image-list">
+        <li class="image-grid">
+            <Image src={img10} alt="Tangyuan Bunnies" />
+        </li>
+        <li class="image-grid">
+            <Image src={img9} alt="Mid Autumn Banner" />
+          </li>
+          <li class="image-grid">
+            <Image src={img8} alt="Jade Rabbit Texture" />
+          </li>
+          <li class="image-grid">
+            <Image src={img13} alt="Year of the Horse" />
+          </li>
+          <li class="image-grid">
+            <Image src={img15} alt="Cozy Coffee" />
+          </li>
+           <li class="image-grid">
+            <Image src={img11} alt="Tiger And Rushou" />
+        </li>
+        </ul>
+    </div>
+    <h3>FOOD</h3>
+    <div class="page-container">
+      <ul id="image-list">
+       <li class="image-grid">
+        <Image src={img6} alt="japanese cheesecake" />
+       </li>
+       <li class="image-grid">
+        <Image src={img5} alt="ramen" />
+       </li>
+       <li class="image-grid">
+        <Image src={img4} alt="persimmon" />
+       </li>
+       <li class="image-grid">
+        <Image src={img7} alt="korean street toast" />
+       </li>
+        </ul>
+    </div>
+    <!-- <div class="page-container">
+      <ul id="image-list">
+        {images.map((image) => (
+          <li class="image-grid">
+            <Image src={image.src} alt={image.alt} />
+          </li>
+        ))}
+        </ul>
+    </div> -->
+  </section>
+</MainLayout>
+<style>
+  img {
+    max-width: 350px;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+  }
+  .section-text {
+    text-align: center;
+    width: 100%;
+  }
+
+   #image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: left;
+  }
+
+  .bb-cover {
+    border: 1px solid;
+    border-color: orange;
+    border-radius: 10px;
+  }
+  .bb-cover:hover {
+    opacity: 70%;
+    transition: 0.2s ease-in-out;
+  }
+  .page-title {
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    list-style-type: none;
+  }
+  .page-container {
+    display: flex;
+    grid-gap: 1rem;
+    justify-content: left;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .insta-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 2rem; 
+  }
+  .image-grid {
+    visibility: hidden;
+    /* padding-bottom: 2rem;
+    width: 300px; */
+  }
+  @media screen and (max-width: 340px) {
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .page-container {
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 40px;
+    }
+  }
+</style>
+<script>
+    import { gsap } from "gsap";
+  var t1 = gsap.timeline();
+  t1.from(".image-grid", { opacity: 0, duration: 1, autoAlpha: 0 });
+</script>
