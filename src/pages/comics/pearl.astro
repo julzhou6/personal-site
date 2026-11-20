@@ -1,0 +1,85 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+import img1 from "../../images/comics/Cover.png";
+import img2 from "../../images/comics/ComicPage1.png";
+import img3 from "../../images/comics/ComicPage2.png";
+import img4 from "../../images/comics/ComicPage3.png";
+import img5 from "../../images/comics/ComicPage4.png";
+import img6 from "../../images/comics/pearl-wip1.jpg";
+import img9 from "../../images/comics/Back 2.png";
+import img10 from "../../images/comics/Ideation.jpg";
+import img11 from "../../images/comics/Ideation 2.jpg";
+import img12 from "../../images/comics/Ideation 3.jpg";
+
+const pages = [
+  { src: img1, alt: "Pearl Page 1" },
+  { src: img2, alt: "Pearl Page 2" },
+  { src: img3, alt: "Pearl Page 3" },
+  { src: img4, alt: "Pearl Page 4" },
+  { src: img5, alt: "Pearl Page 5" },
+  { src: img9, alt: "Pearl Back Cover" }
+];
+const wippages = [
+  { src: img12, alt: "Pearl WIP 4" },
+  { src: img10, alt: "Pearl WIP 2" },
+  { src: img11, alt: "Pearl WIP 3" },
+  { src: img6, alt: "Pearl WIP 1" }
+];
+---
+<MainLayout title="Pearl | Comic">
+    <section class="container">
+        <h1 class="title heading">Pearl</h1>
+        <div class="image-list">
+            {pages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Ink on paper, Digital</h3>
+        <p>
+            This is a four-page comic I created as a part of the Illustration and Visual Storytelling residency at the School of Visual Arts.
+        </p>
+        <p>
+            Inspired by nightmares I would have from being chased by a demon.
+        I think that dreams reflect our mental state – I often run away from
+        my problems and it comes out through my dreams.
+        I created a story where a character would ultimately be forced to
+        make a choice and either be brave and face her demon, or keep
+        running away and potentially lose it all in the process.
+        The inspiration for the characters came from me being curious
+        about my birth stone, the pearl. I found out that vinegar can
+        dissolve genuine pearls and thought this would be an interesting
+        dynamic for opposing characters.
+        </p>
+        <div class="image-list">
+            {wippages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Process</h3>
+        <p>The requirements for this project was to create a four-page comic on anything we chose. To start, I brainstormed story ideas until I landed on this one. Then, I freely doodled the start, middle, and end of the story. From there, I dove into character design and then thumbnailing each page. We met with a comics professor once a week over about 4 weeks and had each step in the comics process reviewed 1-on-1. </p>
+            <p>I challenged myself to start drawing the comic traditionally, with a comic art board for the very first time. It was new to me and a lot of fun. I also noticed how different the strokes turn out traditionally versus digitally -- they look much more organic with a brush pen.
+                Additionally, I wanted to make it into an actual comic format with a cover and inside covers, so I designed a cover page and inside pages to make small zines of them to distribute.
+            </p>
+            <p>In hindsight, it was difficult to condense my story into just four pages, but I learned a lot from the process, and would probably aim to let the pages and story breathe a little more within the restraints.</p>
+    </section>
+</MainLayout>
+<style>
+.container {
+    justify-content: center;
+    padding: 2rem;
+    text-align: left;
+}
+img {
+    max-width: 500px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: left;
+}
+</style>

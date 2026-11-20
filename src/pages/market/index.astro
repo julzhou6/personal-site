@@ -30,7 +30,7 @@ const items = [
     <div class="post-list">
         <p>
         Invite me to join your next market or art show!
-        <p>
+        </p>
         <p>
         Here are some examples of my past market setups and what kinds of things I would usually sell. Currently no online shop but I plan to set one up in the future!
         </p>
@@ -39,8 +39,8 @@ const items = [
         <h2>Market Setup</h2>
         <div class="page-container">
             <ul class="image-list">
-                <Image src={img1} alt="Indoor Market" />
-                <Image src={img2} alt="Outdoor Market Setup" />
+                <Image class="market-image" src={img1} alt="Indoor Market" />
+                <Image class="market-image" src={img2} alt="Outdoor Market Setup" />
                 <video src={vid1} controls muted />
             </ul>
         </div>
@@ -82,11 +82,8 @@ const items = [
 </script> -->
 <style>
     .post {
-        max-width: 90%;
+        max-width: 80%;
     }
-  h1 {
-    text-align: center;
-  }
   li {
     list-style-type: none;
     padding-bottom: 1rem;
@@ -114,10 +111,6 @@ const items = [
   }
   ul {
     padding-left: 0 !important;
-  }
-  .post-list {
-    max-width: 80%;
-    margin: auto;
   }
   .market-images {
     margin: auto;

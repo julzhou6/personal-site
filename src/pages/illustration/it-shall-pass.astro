@@ -1,0 +1,76 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+import img1 from "../../images/Page1.png";
+import img2 from "../../images/Page2.png";
+import img3 from "../../images/Page3.png";
+import img4 from "../../images/Page4.jpeg";
+import img5 from "../../images/Page5.png";
+import img6 from "../../images/eg-wip1.jpg";
+import img7 from "../../images/eg-wip2.jpg";
+import img8 from "../../images/eg-wip3.jpg";
+import img9 from "../../images/eg-wip6.jpg";
+const pages = [
+  { src: img1, alt: "It Shall Pass Page 1" },
+  { src: img2, alt: "It Shall Pass Page 2" },
+  { src: img3, alt: "It Shall Pass Page 3" },
+  { src: img4, alt: "It Shall Pass Page 4" },
+  { src: img5, alt: "It Shall Pass Page 5" }
+];
+const wippages = [
+  { src: img6, alt: "It Shall Pass WIP 1" },
+  { src: img7, alt: "It Shall Pass WIP 2" },
+  { src: img8, alt: "It Shall Pass WIP 3" },
+  { src: img9, alt: "It Shall Pass WIP 6" }
+];
+---
+<MainLayout title="It Shall Pass | Illustration Series">
+    <section class="container">
+        <h1 class="title heading">It Shall Pass</h1>
+        <div class="image-list">
+            {pages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Color Pencil, Digital</h3>
+        <p>
+            This is a series of images I created as a part of the Illustration and Visual Storytelling residency at the School of Visual Arts.
+        </p>
+        <p>
+            This project merges my past and present through how this song,
+        everythinggoes by RM, got me through difficult times in college and
+        my current exploration of art mediums. I experimented through
+        collaging color pencil elements with digital rendering.
+        The transparent person and the more painterly aspects of this work
+        are very different from each other but I wanted that to represent
+        the honest truth of where I’m at in my artistic journey.
+        </p>
+        <div class="image-list">
+            {wippages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Process</h3>
+        <p>For the residency, we were required to produce between 5-8 separate images of work based on a text. Each session (met once a week for 4 weeks), we would continue to work and iterate on our pieces while getting 1-on-1 feedback from our professor.</p>
+        <p>I started off with creating more thumbnail sketches than I needed and narrowed down to the ideas that worked better. Afterwards, I sketched each of the images on larger paper. From there, I scanned in my sketches and finished each image digitally. I wanted to explore with different mediums so I tried a mixed media approach by drawing certain elements of each image in color pencil. </p>
+    </section>
+</MainLayout>
+<style>
+.container {
+    justify-content: center;
+    padding: 2rem;
+    text-align: left;
+}
+img {
+    max-width: 500px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: left;
+}
+</style>

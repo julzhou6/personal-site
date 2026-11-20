@@ -1,0 +1,65 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+import img1 from "../../images/comics/abyss-1.jpg";
+import img2 from "../../images/comics/abyss-2.jpg";
+import img3 from "../../images/comics/abyss-3.jpg";
+import img4 from "../../images/comics/abyss-4.jpg";
+import img5 from "../../images/comics/abyss-5.jpg";
+import img6 from "../../images/comics/og-abyss-zine.jpg";
+
+const pages = [
+  { src: img1, alt: "Abyss Page 1" },
+  { src: img2, alt: "Abyss Page 2" },
+  { src: img3, alt: "Abyss Page 3" },
+  { src: img4, alt: "Abyss Page 4" },
+  { src: img5, alt: "Abyss Page 5" },
+];
+
+const wippages = [
+  { src: img6, alt: "Abyss WIP 1" },
+];
+---
+<MainLayout title="Abyss | Zine">
+    <section class="container">
+        <h1 class="title heading">Abyss</h1>
+        <div class="image-list">
+            {pages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Digital, Riso-printed</h3>
+        <p>
+            This is a zine I created to be riso-printed and also shared at DC Zinefest in 2026.
+        </p>
+        <p>
+            
+        </p>
+        <div class="image-list">
+            {wippages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Process</h3>
+        <p>I started off with writing the script and drew rough thumbnails based on it. After that, I arranged the thumbnails into a one-page zine format and finished it how I normally world, while paying attention to textures and color contrast. Through Spectrolite, I found a color combination that I liked, and would periodically check the colors while finishing the zine. Finally, I calibrated files and handled the riso-printing process at a local print studio.</p>
+    </section>
+</MainLayout>
+<style>
+.container {
+    justify-content: center;
+    padding: 2rem;
+    text-align: left;
+}
+img {
+    max-width: 500px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: left;
+}
+</style>

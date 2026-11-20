@@ -1,0 +1,64 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+import img1 from "../../images/comics/work-title.jpg";
+import img2 from "../../images/comics/print1-2.png";
+import img3 from "../../images/comics/print2-1.png";
+import img4 from "../../images/comics/print2-2.png";
+import img5 from "../../images/comics/print3-1.png";
+import img6 from "../../images/comics/print3-2.png";
+
+const pages = [
+  { src: img1, alt: "Work Title Page" },
+  { src: img3, alt: "Work Page 1-2" },
+  { src: img4, alt: "Work Page 3-4" },
+  { src: img5, alt: "Work Page 5-6" },
+  { src: img6, alt: "Work Page 7-8" }
+];
+const wippages = [
+  { src: img2, alt: "Work thumbnails" }
+];
+---
+<MainLayout title="Work | Comic">
+    <section class="container">
+        <h1 class="title heading">Work</h1>
+        <div class="image-list">
+            {pages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Digital</h3>
+        <p>
+            This is a self-initiated comic project that I created and debuted at Storybox Comics in June 2026.
+        </p>
+        <p>
+           After getting laid off for the second time, I thought a lot about my relationship towards work and how much it impacted my life. Here in this comic, I reflect on working in a post pandemic world and feeling a bit lost with the rapid changes in the tech industry.
+        </p>
+        <div class="image-list">
+            {wippages.map((page) => (
+                <Image src={page.src} alt={page.alt} />
+            ))}
+        </div>
+        <h3>Process</h3>
+        <p>I started off with writing the script and drew rough thumbnails based on it. After that, I moved on to polishing the pages, typesetting, and once I was done, I had to format it for printing.</p>
+    </section>
+</MainLayout>
+<style>
+.container {
+    justify-content: center;
+    padding: 2rem;
+    text-align: left;
+}
+img {
+    max-width: 500px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+.image-list {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1rem;
+    justify-content: left;
+}
+</style>

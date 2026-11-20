@@ -1,30 +1,42 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { Image } from 'astro:assets';
+import img1 from "../images/designs/arrietty-book-cover.png";
 import { fetchAPI } from "../lib/api";
 import PreviewPage from "../layouts/PreviewPage.astro";
 const data = await fetchAPI("pages?_embed");
 ---
 <MainLayout title="Julie Zhou | Home ">
-    <section class="post">
-    <h2>DESIGN AND DEV</h2>
+     <section class="post">
+    <h1>DESIGN</h1>
+    <h2>Web</h2>
     <div class="page-container">
       {
-        data.map((page) => (
-          <div class="page-grid">
+        data.map((page: any) => (
+          <div class="page-grid" style="padding-bottom: 2rem;">
             <PreviewPage page={page} wp={true} />
           </div>
         ))
       }
     </div>
+    <h2>Book Covers</h2>
+    <div class="page-container">
+      <div class="page-grid">
+        <Image src={img1} class="design"alt="A book cover design of Arrietty, with the character looking straight off while standing in a garden of flowers. The shadow of hand covers her." />
+      </div>
+    </div>
   </section>
 </MainLayout>
 <style>
-img {
-    max-width: 400px;
-    max-height: 400px;
-    width: auto;
-    height: auto;
+  .post {
+    max-width: 90%;
   }
+  img {
+      max-width: 400px;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+    }
 
   #carouselTargetList {
     display: flex;
@@ -44,13 +56,12 @@ img {
   .page-container {
     display: flex;
     grid-gap: 1rem;
-    justify-content: center;
+    justify-content: left;
     padding-bottom: 2rem;
     flex-wrap: wrap;
   }
   .page-grid {
     visibility: hidden;
-    padding-bottom: 2rem;
     width: 300px;
   }
   @media screen and (max-width: 340px) {
